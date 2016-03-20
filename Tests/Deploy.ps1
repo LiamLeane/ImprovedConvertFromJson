@@ -60,7 +60,7 @@ if ($env:APPVEYOR_REPO_BRANCH -ne 'master')
     $shouldDeploy = $true
 }
 
-Update-ModuleManifest -Path (Join-Path -Path $ModuleRoot -ChildPath 'PSJira.psd1') -BuildNumber $env:APPVEYOR_BUILD_NUMBER
+Update-ModuleManifest -Path (Join-Path -Path $ModuleRoot -ChildPath 'ImprovedConvertFromJson.psd1') -BuildNumber $env:APPVEYOR_BUILD_NUMBER
 
 $publishParams = @{
     Path = Join-Path -Path $env:APPVEYOR_BUILD_FOLDER -ChildPath $env:ModuleName

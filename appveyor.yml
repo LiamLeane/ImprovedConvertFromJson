@@ -9,8 +9,8 @@ os: Unstable
 environment:
     ModuleName: $(APPVEYOR_PROJECT_NAME)
     Tags: 'JSON'
-    LicenseUri: 'https://github.com/ImprovedConvertFromJson/PSJira/blob/master/LICENSE'
-    ProjectUri: 'https://github.com/ImprovedConvertFromJson/PSJira/'
+    LicenseUri: 'https://github.com/LiamLeane/ImprovedConvertFromJson/blob/master/LICENSE'
+    ProjectUri: 'https://github.com/LiamLeane/ImprovedConvertFromJson/'
 
     # To encrypt a value in AppVeyor, go to the Account menu and choose "Encrypt data"
     PSGalleryAPIKey:

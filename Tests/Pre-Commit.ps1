@@ -1,7 +1,7 @@
 ﻿Write-Host "Starting Pre-Commit Hooks..." -ForegroundColor Cyan
 try {
     Write-Host "PSScriptRoot: $PSScriptRoot"
-    $moduleManifest = Join-Path -Path (Split-Path -Path $PSScriptRoot -Parent) -ChildPath 'PSJira\PSJira.psd1'
+    $moduleManifest = Join-Path -Path (Split-Path -Path $PSScriptRoot -Parent) -ChildPath 'ImprovedConvertFromJson\ImprovedConvertFromJson.psd1'
     Write-Host "Module manifest file: $moduleManifest"
     Import-Module $moduleManifest
     $pesterResults = Invoke-Pester -Quiet -PassThru
