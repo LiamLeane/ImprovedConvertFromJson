@@ -1,0 +1,49 @@
+# See http://www.appveyor.com/docs/appveyor-yml for many more options
+
+# Credit for a lot of this file goes to RamblingCookieMonster:
+# https://github.com/RamblingCookieMonster/PSSQLite/blob/master/appveyor.yml
+
+# Necessary for now to make AppVeyor run with PowerShell 5
+os: Unstable
+
+environment:
+    ModuleName: $(APPVEYOR_PROJECT_NAME)
+    Tags: 'JSON'
+    LicenseUri: 'https://github.com/ImprovedConvertFromJson/PSJira/blob/master/LICENSE'
+    ProjectUri: 'https://github.com/ImprovedConvertFromJson/PSJira/'
+
+    # To encrypt a value in AppVeyor, go to the Account menu and choose "Encrypt data"
+    PSGalleryAPIKey:
+        secure: fe7k7hcIb96YiaFvOGLJiCXlUGqVeY0bWNDRpmp2rQ/GtrXnw/9VVbRl0GWEQxYz
+
+version: 1.0.{build}
+branches:
+    only:
+        - master
+        - dev
+# Don't rebuild when I tag a release on GitHub
+skip_tags: true
+
+skip_commits:
+    message: /readme*/
+
+init:
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
+install:
+  - cinst Pester -y
+
+test_script:
+#    - ps: Invoke-Pester -Script $env:APPVEYOR_BUILD_FOLDER
+    - ps: . .\Tests\Appveyor.ps1
+
+# Compile just the module into a zip file
+build_script:
+    - 7z a %ModuleName%.zip %ModuleName%\
+
+artifacts:
+    - path: $(ModuleName).zip
+
+# Deploy to the PowerShell Gallery
+deploy_script:
+    - ps: . .\Tests\Deploy.ps1
