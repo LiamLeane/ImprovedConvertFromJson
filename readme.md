@@ -1,6 +1,6 @@
 # ImprovedConvertFromJson
 
-[![Build status](https://ci.appveyor.com/api/projects/status/jjgrvbutb07tjdhe?svg=true)](https://ci.appveyor.com/project/LiamLeane/improvedconvertfromjson)
+[![Build status](https://ci.appveyor.com/api/projects/status/jjgrvbutb07tjdhe?svg=true)](https://ci.appveyor.com/project/LiamLeane/improvedconvertfromjson) [![PowerShell Gallery - ImprovedConvertFromJson](https://img.shields.io/badge/PowerShell%20Gallery-ImprovedConvertFromJson-blue.svg)](https://www.powershellgallery.com/packages/ImprovedConvertFromJson)
 
 This Powershell module provides a single function, ConvertFrom-JsonWithArgs, which imitates the behavior of ConvertFrom-Json but allows for the MaxJsonLength to be overridden.
 
