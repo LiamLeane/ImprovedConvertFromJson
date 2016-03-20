@@ -55,7 +55,12 @@ if ($env:APPVEYOR_REPO_BRANCH -ne 'master')
 #    Write-Host "[release]" -ForegroundColor Green -NoNewline
 #    Write-Host ", so it will not be published." -ForegroundColor Yellow
 } elseif ($PSVersionTable.PSVersion -lt '5.0.0') {
-    Write-Warning "We are not running in a PowerShell 5 environment, so the module cannot be pulbished."
+    Write-Warning "We are not running in a PowerShell 5 environment, install the modules."
+	$msiPath = "$($env:USERPROFILE)\PackageManagement_x64.msi"
+	(New-Object Net.WebClient).DownloadFile('https://download.microsoft.com/download/4/1/A/41A369FA-AA36-4EE9-845B-20BCC1691FC5/PackageManagement_x64.msi', $msiPath)
+	cmd /c start /wait msiexec /i $msiPath /quiet
+	Import-Module PowerShellGet
+	$shouldDeploy = $true
 } else {
     $shouldDeploy = $true
 }
