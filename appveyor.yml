@@ -4,7 +4,7 @@
 # https://github.com/RamblingCookieMonster/PSSQLite/blob/master/appveyor.yml
 
 # Necessary for now to make AppVeyor run with PowerShell 5
-os: Unstable
+os: unstable
 
 environment:
     ModuleName: $(APPVEYOR_PROJECT_NAME)
@@ -20,7 +20,6 @@ version: 1.0.{build}
 branches:
     only:
         - master
-        - dev
 # Don't rebuild when I tag a release on GitHub
 skip_tags: true
 
@@ -34,7 +33,6 @@ install:
   - cinst Pester -y
 
 test_script:
-#    - ps: Invoke-Pester -Script $env:APPVEYOR_BUILD_FOLDER
     - ps: . .\Tests\Appveyor.ps1
 
 # Compile just the module into a zip file
